@@ -1,0 +1,38 @@
+<h3>Contact Details</h3>
+<hr>
+
+<img src="{{contact.picture}}" style="height: 200px; padding-bottom: 5px;">
+
+<div class="row">
+  <div class="col-sm-4">Full Name</div>
+  <div class="col-sm-8">
+    {{contact | fullname}}
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-4">Age</div>
+  <div class="col-sm-8">{{contact.dob | age: 3}}</div>
+</div>
+<div class="row">
+  <div class="col-sm-4">Email</div>
+  <div class="col-sm-8">{{contact.email}}</div>
+</div>
+<div class="row">
+  <div class="col-sm-4">Phone Number</div>
+  <div class="col-sm-8">{{contact.phone}}</div>
+</div>
+<div class="row">
+  <div class="col-sm-4">City</div>
+  <div class="col-sm-8">{{contact.city}}</div>
+</div>
+<div class="row">
+  <div class="col-sm-4">State</div>
+  <div class="col-sm-8">{{contact.state}}</div>
+</div>
+<div class="row">
+  <div class="col-sm-4">Country</div>
+  <div class="col-sm-8">{{contact.country}}</div>
+</div>
+
+<button class="btn btn-primary" style="margin:5px" [routerLink]="['/edit-contact', contact.id]">Edit Contact</button>
+<button class="btn btn-danger" (click)="deleteContact()">Delete Contact</button>

@@ -1,0 +1,63 @@
+<h3>Add a new contact</h3>
+<hr>
+<form class="form" #f1="ngForm">
+    <div class="form-group">
+        <label for="firstname">Firstname</label>
+        <input type="text" class="form-control" id="firstname" 
+        #firstname="ngModel" required minlength="3" maxlength="15"
+        name="firstname" [(ngModel)]="contact.firstname">
+        <div class="err" *ngIf="firstname.dirty && firstname.invalid">
+            <div *ngIf="firstname.errors['required']">Firstname required.</div>
+            <div *ngIf="firstname.errors['minlength']">At least 3 letters.</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="lastname">Lastname</label>
+        <input type="text" class="form-control" id="lastname" name="lastname" [(ngModel)]="contact.lastname">
+    </div>    
+    <div class="form-group">
+        <label>Gender</label><br>
+        <label><input type="radio" name="gender" value="Male" [(ngModel)]="contact.gender">Male</label><br>
+        <label><input type="radio" name="gender" value="Female" [(ngModel)]="contact.gender">Female</label><br>
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" 
+        #email="ngModel" required
+        name="email" [(ngModel)]="contact.email">
+        <div class="err" *ngIf="email.dirty && email.invalid">
+            <div *ngIf="email.errors['required']">Email required.</div>
+        </div>
+    </div>  
+    <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" class="form-control" id="phone" 
+        #phone="ngModel" required pattern="\d{10,12}"
+        name="phone" [(ngModel)]="contact.phone">
+        <div class="err" *ngIf="phone.dirty && phone.invalid">
+            <div *ngIf="phone.errors['required']">Phone number required.</div>
+            <div *ngIf="firstname.errors['pattern']">10 to 12 digits.</div>
+        </div>
+    </div> 
+    <div class="form-group">
+        <label for="dob">Date of Birth</label>
+        <input type="date" class="form-control" id="dob" name="dob" [(ngModel)]="contact.dob">
+    </div>   
+    <div class="form-group">
+        <label for="city">City</label>
+        <input type="text" class="form-control" id="city" name="city" [(ngModel)]="contact.city">
+    </div>  
+    <div class="form-group">
+        <label for="state">State</label>
+        <input type="text" class="form-control" id="state" name="state" [(ngModel)]="contact.state">
+    </div>  
+    <div class="form-group">
+        <label for="country">Country</label>
+        <input type="text" class="form-control" id="country" name="country" [(ngModel)]="contact.country">
+    </div>  
+    <div class="form-group">
+        <label for="picture">Picture (URL)</label>
+        <input type="url" class="form-control" id="picture" name="picture" [(ngModel)]="contact.picture">
+    </div>  
+    <button class="btn btn-{{f1.invalid ? 'danger': 'primary'}}" style="margin:5px" [disabled]="f1.invalid" (click)="addContact()">Add</button>
+</form>
